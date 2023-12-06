@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Username Suggestions</title>
+</head>
+<body>
+  <form id="emailForm">
+    <label for="email">Enter Email:</label>
+    <input type="email" id="email" name="email">
+    <button type="button" onclick="generateUsernames()">Get Usernames</button>
+  </form>
+
+  <script>
+    function generateUsernames() {
+      const email = document.getElementById('email').value;
+      const atIndex = email.indexOf('@');
+      const username = email.substring(0, atIndex);
+
+      generateSuggestions(username);
+    }
+
+    function generateSuggestions(baseUsername) {
+      console.log("Suggestions:");
+      console.log(baseUsername);
+
+      const randomChars4 = generateRandomChars(4);
+      console.log(baseUsername + randomChars4);
+
+      const randomChars5 = generateRandomChars(5);
+      console.log(baseUsername + randomChars5);
+
+      const randomChars6 = generateRandomChars(6);
+      console.log(baseUsername + randomChars6);
+    }
+
+    function generateRandomChars(length) {
+      const chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+      let result = '';
+      for (let i = 0; i < length; i++) {
+        result += chars.charAt(Math.floor(Math.random() * chars.length));
+      }
+      return result;
+    }
+  </script>
+</body>
+</html>
